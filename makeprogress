@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Count lines
-TOTAL=$(make -n $@ | wc -l)
+TOTAL=$( ( make -n $@; echo Finito; ) | wc -l )
 
 # Make stuff
-make $@ | pv -l -s $TOTAL -pteb >/dev/null
+( make $@; echo Finito; ) | pv -l -s $TOTAL -pteb >/dev/null
